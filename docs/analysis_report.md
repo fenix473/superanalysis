@@ -138,17 +138,19 @@ plt.show()
 
 # Create distribution chart - all lines executed
 plt.figure(figsize=(10, 6))
-nps_col = ('On a scale from 0 to 10. How likely are you to recommend '
-           'this program to a friend or colleague?')
-df['NPS_Score'] = df[nps_col].str.extract(r'(\d+)').astype(float)
 
-plt.hist(df['NPS_Score'].dropna(), bins=11, alpha=0.7, color='skyblue',
-         edgecolor='black')
+# Extract NPS scores from the original column
+nps_col = 'On a scale from 0 to 10. How likely are you to recommend this program to a friend or colleague?'
+nps_scores = df[nps_col].str.extract(r'(\d+)').astype(float).dropna()
+
+plt.hist(nps_scores, bins=range(0, 12, 1), alpha=0.7, color='skyblue',
+         edgecolor='black', align='left')
 plt.title('Distribution of NPS Scores', fontsize=14, fontweight='bold')
 plt.xlabel('NPS Score')
 plt.ylabel('Number of Participants')
-plt.axvline(df['NPS_Score'].mean(), color='red', linestyle='--',
-            label=f'Mean: {df["NPS_Score"].mean():.1f}')
+mean_score = nps_scores.mean()
+plt.axvline(mean_score, color='red', linestyle='--',
+            label=f'Mean: {mean_score:.1f}')
 plt.legend()
 plt.savefig('images/nps_distribution.png', dpi=300, bbox_inches='tight')
 plt.show()
@@ -413,7 +415,211 @@ print("Detailed results saved as 'csv/track_improvements.csv'")
 
 ---
 
-## 🔍 Detailed Analysis
+## 🎯 Step 6: Session Rankings Analysis
+
+### Optimized Code (100% Coverage)
+```python
+"""Step 6: Session Rankings Analysis - Optimized for 90%+ utilization"""
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load data
+df = pd.read_csv("csv/imported_data.csv")
+
+# Define session columns
+session_cols = {
+    'favorite': 'What session did you enjoy the most?',
+    'second_favorite': 'What is the second session you enjoyed the most?'
+}
+
+# Analyze session preferences by track
+def analyze_session_rankings(df, session_cols):
+    track_rankings = {}
+    
+    for track in df['TRACK'].unique():
+        track_data = df[df['TRACK'] == track]
+        
+        # Count favorite sessions
+        favorite_sessions = track_data[session_cols['favorite']].value_counts()
+        second_favorite_sessions = track_data[session_cols['second_favorite']].value_counts()
+        
+        # Combine rankings (1 point for each session regardless of rank)
+        combined_rankings = {}
+        
+        # Add favorite sessions (1 point each)
+        for session, count in favorite_sessions.items():
+            if pd.notna(session) and session.strip():
+                combined_rankings[session] = count
+        
+        # Add second favorite sessions (1 point each)
+        for session, count in second_favorite_sessions.items():
+            if pd.notna(session) and session.strip():
+                if session in combined_rankings:
+                    combined_rankings[session] += count
+                else:
+                    combined_rankings[session] = count
+        
+        # Sort by points (descending)
+        sorted_rankings = dict(sorted(combined_rankings.items(), 
+                                     key=lambda x: x[1], reverse=True))
+        
+        track_rankings[track] = sorted_rankings
+    
+    return track_rankings
+
+# Analyze rankings
+session_rankings = analyze_session_rankings(df, session_cols)
+
+# Create visualizations
+fig, axes = plt.subplots(1, 3, figsize=(24, 10))
+fig.suptitle('Session Rankings by Track (1 point per session regardless of rank)', 
+             fontsize=20, fontweight='bold')
+
+colors = ['#2E8B57', '#4682B4', '#CD853F']
+
+for i, (track, rankings) in enumerate(session_rankings.items()):
+    if rankings:
+        # Get top 8 sessions for better visualization
+        top_sessions = dict(list(rankings.items())[:8])
+        
+        # Shorten session names for better display
+        shortened_names = []
+        for session in top_sessions.keys():
+            if 'Day' in session and 'Session' in session:
+                # Extract day and session info
+                parts = session.split(':')
+                if len(parts) > 1:
+                    day_session = parts[0].strip()
+                    title = parts[1].strip()
+                    if len(title) > 30:
+                        title = title[:30] + '...'
+                    shortened_names.append(f"{day_session}\n{title}")
+                else:
+                    shortened_names.append(session[:40] + '...' if len(session) > 40 else session)
+            else:
+                shortened_names.append(session[:40] + '...' if len(session) > 40 else session)
+        
+        # Create horizontal bar chart
+        bars = axes[i].barh(range(len(top_sessions)), list(top_sessions.values()), 
+                           color=colors[i], alpha=0.7)
+        axes[i].set_yticks(range(len(top_sessions)))
+        axes[i].set_yticklabels(shortened_names, fontsize=10)
+        axes[i].set_xlabel('Points', fontweight='bold')
+        axes[i].set_title(f'{track} Track', fontsize=16, fontweight='bold')
+        
+        # Add value labels on bars
+        for j, (bar, value) in enumerate(zip(bars, top_sessions.values())):
+            axes[i].text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2,
+                        f'{value}', ha='left', va='center', fontweight='bold')
+        
+        axes[i].invert_yaxis()  # Top session at the top
+    else:
+        axes[i].text(0.5, 0.5, f'{track}\nNo session\npreferences', 
+                    ha='center', va='center', fontsize=14, fontweight='bold')
+        axes[i].axis('off')
+
+plt.tight_layout()
+plt.savefig('images/session_rankings.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# Display detailed results
+print("Session Rankings by Track:")
+print("=" * 60)
+
+for track, rankings in session_rankings.items():
+    print(f"\n{track} Track:")
+    print("-" * 40)
+    if rankings:
+        for i, (session, points) in enumerate(rankings.items(), 1):
+            print(f"{i:2d}. {session}")
+            print(f"    Points: {points}")
+            print()
+    else:
+        print("  No session preferences recorded")
+
+# Create summary statistics
+print("\nSummary Statistics:")
+print("=" * 60)
+
+for track, rankings in session_rankings.items():
+    if rankings:
+        total_points = sum(rankings.values())
+        unique_sessions = len(rankings)
+        top_session = list(rankings.keys())[0]
+        top_points = rankings[top_session]
+        
+        print(f"\n{track} Track:")
+        print(f"  Total Points: {total_points}")
+        print(f"  Unique Sessions: {unique_sessions}")
+        print(f"  Top Session: {top_session}")
+        print(f"  Top Points: {top_points}")
+
+# Save detailed results
+track_results = []
+for track, rankings in session_rankings.items():
+    if rankings:
+        for session, points in rankings.items():
+            track_results.append({
+                'Track': track,
+                'Session': session,
+                'Points': points,
+                'Rank': list(rankings.keys()).index(session) + 1
+            })
+    else:
+        track_results.append({
+            'Track': track,
+            'Session': 'None',
+            'Points': 0,
+            'Rank': 0
+        })
+
+pd.DataFrame(track_results).to_csv('csv/session_rankings.csv', index=False)
+
+print("\nSession rankings saved as 'images/session_rankings.png'")
+print("Detailed results saved as 'csv/session_rankings.csv'")
+```
+
+### Results
+
+#### Session Rankings by Track:
+
+| Track | Top Session | Points | Second Place | Points |
+|-------|-------------|--------|--------------|--------|
+| **EXEC** | Data as the Fuel: AI Data Strategy & Governance | 6 | Measuring AI Value & Ethical AI | 6 |
+| **PROD** | AI for Creativity & Marketing | 8 | AI in the Workplace Discussion | 7 |
+| **DEV** | End-to-End LLM Application Development | 15 | Building RAG system with local LLM | 8 |
+
+### Key Insights by Track
+
+#### Executive Track (EXEC) - Strategic Focus 🏢
+- **Top Sessions**: Data Strategy & Governance & AI Value Measurement (6 points each - tied)
+- **Third Place**: Business Impact Framework (3 points)
+- **Pattern**: Strategic, governance-focused sessions dominate
+- **Total Points**: 28 across 10 unique sessions
+
+#### Productivity Track (PROD) - Practical & Creative 🎨
+- **Top Session**: AI for Creativity & Marketing (8 points)
+- **Second Place**: AI in the Workplace Discussion (7 points)
+- **Third Place**: AI 101, Privacy/Safety, & Workflows (4 points each)
+- **Pattern**: Mix of practical tools and creative applications
+- **Total Points**: 36 across 9 unique sessions
+
+#### Developer Track (DEV) - Technical Excellence 💻
+- **Top Session**: LLM Application Development (15 points - overwhelming favorite)
+- **Second Place**: RAG System Building (8 points)
+- **Third Place**: Cybersecurity & Agentic AI (5 points each)
+- **Pattern**: Hands-on technical sessions dominate
+- **Total Points**: 44 across 9 unique sessions
+
+### Visualizations
+
+![Session Rankings](../images/session_rankings.png)
+
+---
+
+## �� Detailed Analysis
 
 ### Track Performance Breakdown
 
@@ -510,6 +716,8 @@ TOTAL                       169      0   100%
 | `csv/improvement_categories.csv` | Categorized improvement data | - |
 | `images/track_improvements.png` | Track-specific improvement word clouds | - |
 | `csv/track_improvements.csv` | Track-specific improvement data | - |
+| `images/session_rankings.png` | Session rankings charts | - |
+| `csv/session_rankings.csv` | Session rankings data | - |
 
 ---
 

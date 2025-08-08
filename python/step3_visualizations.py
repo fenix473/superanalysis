@@ -39,17 +39,19 @@ plt.show()
 
 # Create distribution chart - all lines executed
 plt.figure(figsize=(10, 6))
-nps_col = ('On a scale from 0 to 10. How likely are you to recommend '
-           'this program to a friend or colleague?')
-df['NPS_Score'] = df[nps_col].str.extract(r'(\d+)').astype(float)
 
-plt.hist(df['NPS_Score'].dropna(), bins=11, alpha=0.7, color='skyblue',
-         edgecolor='black')
+# Extract NPS scores from the original column
+nps_col = 'On a scale from 0 to 10. How likely are you to recommend this program to a friend or colleague?'
+nps_scores = df[nps_col].str.extract(r'(\d+)').astype(float).dropna()
+
+plt.hist(nps_scores, bins=range(0, 12, 1), alpha=0.7, color='skyblue',
+         edgecolor='black', align='left')
 plt.title('Distribution of NPS Scores', fontsize=14, fontweight='bold')
 plt.xlabel('NPS Score')
 plt.ylabel('Number of Participants')
-plt.axvline(df['NPS_Score'].mean(), color='red', linestyle='--',
-            label=f'Mean: {df["NPS_Score"].mean():.1f}')
+mean_score = nps_scores.mean()
+plt.axvline(mean_score, color='red', linestyle='--',
+            label=f'Mean: {mean_score:.1f}')
 plt.legend()
 plt.savefig('images/nps_distribution.png', dpi=300, bbox_inches='tight')
 plt.show()

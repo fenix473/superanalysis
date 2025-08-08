@@ -1,0 +1,29 @@
+Track,Session,Points,Rank
+EXEC,"Day 1, Session 3: Data as the Fuel: AI Data Strategy & Governance",6,1
+EXEC,"Day 3, Session1: Measuring AI Value: Beyond Traditional ROI & Ethical AI: Principles, Risks & Regulatory Compliance",6,2
+EXEC,"Day 2, Session 3: Transforming Vision into Action Part 1: Business Impact Framework",3,3
+EXEC,"Day 3, Session 2: Navigating the AI Ecosystem: Build, Buy, or Partner",3,4
+EXEC,"Day 3, Session 3: Capstone Workshop: Developing Your Strategic AI Action plan",2,5
+EXEC,"Day 1, Session 1: Demystifying AI: Beyond the Hype",2,6
+EXEC,"Day 2, Session 2: Fireside chat with Amanda Crawford",2,7
+EXEC,"Day 2, Session 1: Generative AI",2,8
+EXEC,"Day 1, Session 2: AI in Action: Industry & Functional use Cases",1,9
+EXEC,"Day 2, Session 4: Transforming Vision into Action Part 2: Framework Application",1,10
+PROD,"Day 1, Session 4: AI for Creativity & Marketing",8,1
+PROD,"Day 3, Session 1: AI in the Workplace: What’s Changing? Discussion",7,2
+PROD,"Day 1, Session 1: AI 101 Without the Tech Talk",4,3
+PROD,"Day 2, Session 4: Staying Safe with AI: Privacy, Trust & Limits",4,4
+PROD,"Day 2, Session 1: Lead with AI: Save Time with Workflows",4,5
+PROD,"Day 3, Session 2&3: Showcase Studio: Build Your “AI in Action” project",3,6
+PROD,"Day 1, Session 2: Try This: AI Tools for Everyday Tasks & Productivity",3,7
+PROD,"Day 1, Session 3: Apply It: AI in Action - Use Tools for Everyday Goals",2,8
+PROD,"Day 2, Session 3: Tool Talk: Rate & Reflect",1,9
+DEV,"Day 3, Session 2&3: End-to-End LLM Application Development and coding agent",15,1
+DEV,"Day 2, Session 3: Building RAG system with local LLM",8,2
+DEV,"Day 2, Session 4: N8n / cybersecurity framework / LLM guard",5,3
+DEV,"Day 2, Session 2: Agentic AI from Notebook to Production",5,4
+DEV,"Day 3, Session 1: Building applications using coding agents",4,5
+DEV,"Day 1, Session 3: Integrating LLM with application using API, tools and MCP",3,6
+DEV,"Day 1, Session1: Understanding LLMs",2,7
+DEV,"Day 1, Session2: Mastering Prompt Engineering Techniques & tools for prompt building",1,8
+DEV,"Day 1, Session 4: Introduction to RAG and basic implementation",1,9

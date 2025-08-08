@@ -158,9 +158,9 @@ print("Visualizations saved as 'images/nps_analysis.png' and 'images/nps_distrib
 
 ### Visualizations
 
-![NPS Analysis](images/nps_analysis.png)
+![NPS Analysis](../images/nps_analysis.png)
 
-![NPS Distribution](images/nps_distribution.png)
+![NPS Distribution](../images/nps_distribution.png)
 
 ### Code Quality Metrics
 - **Code Coverage**: 100% (35/35 lines executed)
@@ -270,7 +270,7 @@ print("Improvement categories saved as 'csv/improvement_categories.csv'")
 
 ### Visualizations
 
-![Improvement Word Cloud](images/improvement_wordcloud.png)
+![Improvement Word Cloud](../images/improvement_wordcloud.png)
 
 ---
 
@@ -409,7 +409,7 @@ print("Detailed results saved as 'csv/track_improvements.csv'")
 
 ### Visualizations
 
-![Track Improvements](images/track_improvements.png)
+![Track Improvements](../images/track_improvements.png)
 
 ---
 

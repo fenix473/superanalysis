@@ -49,7 +49,7 @@ plt.hist(nps_scores, bins=range(0, 12, 1), alpha=0.7, color='skyblue',
 plt.title('Distribution of NPS Scores', fontsize=14, fontweight='bold')
 plt.xlabel('NPS Score')
 plt.ylabel('Number of Participants')
-mean_score = nps_scores.mean()
+mean_score = nps_scores.mean().item()
 plt.axvline(mean_score, color='red', linestyle='--',
             label=f'Mean: {mean_score:.1f}')
 plt.legend()

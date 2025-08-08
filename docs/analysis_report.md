@@ -22,7 +22,7 @@ print(f"Rows: {len(df)}, Columns: {len(df.columns)}")
 print(f"Columns: {list(df.columns)}")
 print("\nFirst 5 rows:")
 print(df.head())
-df.to_csv("imported_data.csv", index=False)
+df.to_csv("csv/imported_data.csv", index=False)
 ```
 
 ### Results
@@ -42,7 +42,7 @@ df.to_csv("imported_data.csv", index=False)
 import pandas as pd
 
 # Load data and calculate NPS - all lines executed
-df = pd.read_csv("imported_data.csv")
+df = pd.read_csv("csv/imported_data.csv")
 nps_col = ('On a scale from 0 to 10. How likely are you to recommend '
            'this program to a friend or colleague?')
 df['NPS_Score'] = df[nps_col].str.extract(r'(\d+)').astype(float)
@@ -72,7 +72,7 @@ results = {
     'PROD': calculate_nps(df[df['TRACK'] == 'PROD']['NPS_Score'].dropna()),
     'DEV': calculate_nps(df[df['TRACK'] == 'DEV']['NPS_Score'].dropna())
 }
-pd.Series(results).to_csv("nps_results.csv")
+pd.Series(results).to_csv("csv/nps_results.csv")
 ```
 
 ### Results
@@ -105,7 +105,7 @@ import seaborn as sns
 
 # Load data and create visualizations - all lines executed
 df = pd.read_csv("imported_data.csv")
-nps_results = pd.read_csv("nps_results.csv", index_col=0)
+nps_results = pd.read_csv("csv/nps_results.csv", index_col=0)
 
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
@@ -133,7 +133,7 @@ ax2.set_title('Participant Distribution by Track',
               fontsize=14, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('nps_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/nps_analysis.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Create distribution chart - all lines executed
@@ -150,17 +150,17 @@ plt.ylabel('Number of Participants')
 plt.axvline(df['NPS_Score'].mean(), color='red', linestyle='--',
             label=f'Mean: {df["NPS_Score"].mean():.1f}')
 plt.legend()
-plt.savefig('nps_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/nps_distribution.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-print("Visualizations saved as 'nps_analysis.png' and 'nps_distribution.png'")
+print("Visualizations saved as 'images/nps_analysis.png' and 'images/nps_distribution.png'")
 ```
 
 ### Visualizations
 
-![NPS Analysis](nps_analysis.png)
+![NPS Analysis](images/nps_analysis.png)
 
-![NPS Distribution](nps_distribution.png)
+![NPS Distribution](images/nps_distribution.png)
 
 ### Code Quality Metrics
 - **Code Coverage**: 100% (35/35 lines executed)
@@ -231,7 +231,7 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis('off')
 plt.title('Improvement Areas by Category', fontsize=18, fontweight='bold', pad=20)
 plt.tight_layout()
-plt.savefig('improvement_wordcloud.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/improvement_wordcloud.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Display categorized improvements
@@ -241,10 +241,10 @@ for category, count in sorted(category_counts.items(), key=lambda x: x[1], rever
 
 # Save categorized improvements
 pd.DataFrame(sorted(category_counts.items(), key=lambda x: x[1], reverse=True), 
-             columns=['Category', 'Mentions']).to_csv('improvement_categories.csv', index=False)
+             columns=['Category', 'Mentions']).to_csv('csv/improvement_categories.csv', index=False)
 
-print("\nWord cloud saved as 'improvement_wordcloud.png'")
-print("Improvement categories saved as 'improvement_categories.csv'")
+print("\nWord cloud saved as 'images/improvement_wordcloud.png'")
+print("Improvement categories saved as 'csv/improvement_categories.csv'")
 ```
 
 ### Results
@@ -270,7 +270,7 @@ print("Improvement categories saved as 'improvement_categories.csv'")
 
 ### Visualizations
 
-![Improvement Word Cloud](improvement_wordcloud.png)
+![Improvement Word Cloud](images/improvement_wordcloud.png)
 
 ---
 
@@ -350,7 +350,7 @@ for i, (track, improvements) in enumerate(track_improvements.items()):
         axes[i].axis('off')
 
 plt.tight_layout()
-plt.savefig('track_improvements.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/track_improvements.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Display results by track
@@ -374,10 +374,10 @@ for track, improvements in track_improvements.items():
     else:
         track_results.append({'Track': track, 'Category': 'None', 'Mentions': 0})
 
-pd.DataFrame(track_results).to_csv('track_improvements.csv', index=False)
+pd.DataFrame(track_results).to_csv('csv/track_improvements.csv', index=False)
 
-print("\nTrack improvements saved as 'track_improvements.png'")
-print("Detailed results saved as 'track_improvements.csv'")
+print("\nTrack improvements saved as 'images/track_improvements.png'")
+print("Detailed results saved as 'csv/track_improvements.csv'")
 ```
 
 ### Results
@@ -409,7 +409,7 @@ print("Detailed results saved as 'track_improvements.csv'")
 
 ### Visualizations
 
-![Track Improvements](track_improvements.png)
+![Track Improvements](images/track_improvements.png)
 
 ---
 
@@ -496,20 +496,20 @@ TOTAL                       169      0   100%
 
 | File | Purpose | Coverage |
 |------|---------|----------|
-| `step1_csv_import.py` | Data import script | 100% |
-| `step2_nps_analysis.py` | NPS calculation script | 100% |
-| `step3_visualizations.py` | Chart generation script | 100% |
-| `step4_word_cloud.py` | Improvement analysis script | 100% |
-| `step5_track_improvements.py` | Track-specific analysis script | 100% |
-| `test_coverage.py` | Test suite | 100% |
-| `imported_data.csv` | Clean dataset | - |
-| `nps_results.csv` | NPS scores by track | - |
-| `nps_analysis.png` | Track comparison charts | - |
-| `nps_distribution.png` | Score distribution histogram | - |
-| `improvement_wordcloud.png` | Improvement categories word cloud | - |
-| `improvement_categories.csv` | Categorized improvement data | - |
-| `track_improvements.png` | Track-specific improvement word clouds | - |
-| `track_improvements.csv` | Track-specific improvement data | - |
+| `python/step1_csv_import.py` | Data import script | 100% |
+| `python/step2_nps_analysis.py` | NPS calculation script | 100% |
+| `python/step3_visualizations.py` | Chart generation script | 100% |
+| `python/step4_word_cloud.py` | Improvement analysis script | 100% |
+| `python/step5_track_improvements.py` | Track-specific analysis script | 100% |
+| `python/test_coverage.py` | Test suite | 100% |
+| `csv/imported_data.csv` | Clean dataset | - |
+| `csv/nps_results.csv` | NPS scores by track | - |
+| `images/nps_analysis.png` | Track comparison charts | - |
+| `images/nps_distribution.png` | Score distribution histogram | - |
+| `images/improvement_wordcloud.png` | Improvement categories word cloud | - |
+| `csv/improvement_categories.csv` | Categorized improvement data | - |
+| `images/track_improvements.png` | Track-specific improvement word clouds | - |
+| `csv/track_improvements.csv` | Track-specific improvement data | - |
 
 ---
 

@@ -27,14 +27,14 @@ Make sure this file exists and is accessible.
 
 #### Run the Import Script
 ```bash
-python step1_csv_import.py
+python python/step1_csv_import.py
 ```
 
 #### Expected Output
 The script will:
 - Import data from CSV file
 - Display basic information (rows, columns, first 5 rows)
-- Save data to `imported_data.csv` as backup
+- Save data to `csv/imported_data.csv` as backup
 
 ### Features
 - **Simple Import**: Direct CSV file import
@@ -57,7 +57,7 @@ Calculate Net Promoter Score (NPS) per track and overall to measure program sati
 
 #### Run the NPS Analysis
 ```bash
-python step2_nps_analysis.py
+python python/step2_nps_analysis.py
 ```
 
 ### Results
@@ -75,20 +75,20 @@ python step2_nps_analysis.py
 - **Overall program** performs well with a 59.3 NPS (considered "Good" range)
 
 ### Output Files
-- `nps_results.csv` - Detailed NPS scores for each track
+- `csv/nps_results.csv` - Detailed NPS scores for each track
 
 ---
 
 ### File Structure
 ```
 Analysis/
-├── step1_csv_import.py          # CSV import script
-├── step2_nps_analysis.py        # NPS analysis script
+├── python/step1_csv_import.py          # CSV import script
+├── python/step2_nps_analysis.py        # NPS analysis script
 ├── requirements.txt             # Python dependencies
 ├── README.md                   # This file
 ├── .gitignore                  # Git ignore rules
-├── imported_data.csv           # Imported data backup
-└── nps_results.csv             # NPS analysis results
+├── csv/imported_data.csv           # Imported data backup
+└── csv/nps_results.csv             # NPS analysis results
 ```
 
 ### Next Steps

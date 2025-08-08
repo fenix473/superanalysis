@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load data and create visualizations - all lines executed
-df = pd.read_csv("imported_data.csv")
-nps_results = pd.read_csv("nps_results.csv", index_col=0)
+df = pd.read_csv("csv/imported_data.csv")
+nps_results = pd.read_csv("csv/nps_results.csv", index_col=0)
 
 plt.style.use('seaborn-v0_8')
 sns.set_palette("husl")
@@ -34,7 +34,7 @@ ax2.set_title('Participant Distribution by Track',
               fontsize=14, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('nps_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/nps_analysis.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Create distribution chart - all lines executed
@@ -51,7 +51,7 @@ plt.ylabel('Number of Participants')
 plt.axvline(df['NPS_Score'].mean(), color='red', linestyle='--',
             label=f'Mean: {df["NPS_Score"].mean():.1f}')
 plt.legend()
-plt.savefig('nps_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/nps_distribution.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-print("Visualizations saved as 'nps_analysis.png' and 'nps_distribution.png'")
+print("Visualizations saved as 'images/nps_analysis.png' and 'images/nps_distribution.png'")

@@ -12,10 +12,10 @@ def test_step1_import():
     import step1_csv_import
     
     # Verify the output file was created
-    assert os.path.exists("imported_data.csv")
+    assert os.path.exists("csv/imported_data.csv")
     
     # Test that we can read the output
-    df = pd.read_csv("imported_data.csv")
+    df = pd.read_csv("csv/imported_data.csv")
     assert len(df) == 54
     assert len(df.columns) == 11
     assert 'TRACK' in df.columns
@@ -27,10 +27,10 @@ def test_step2_nps():
     import step2_nps_analysis
     
     # Verify the output file was created
-    assert os.path.exists("nps_results.csv")
+    assert os.path.exists("csv/nps_results.csv")
     
     # Test that we can read the results
-    results = pd.read_csv("nps_results.csv", index_col=0)
+    results = pd.read_csv("csv/nps_results.csv", index_col=0)
     assert len(results) == 4  # Overall + 3 tracks
     assert 'Overall' in results.index
     assert 'EXEC' in results.index
@@ -44,12 +44,12 @@ def test_step3_visualizations():
     import step3_visualizations
     
     # Verify the output files were created
-    assert os.path.exists("nps_analysis.png")
-    assert os.path.exists("nps_distribution.png")
+    assert os.path.exists("images/nps_analysis.png")
+assert os.path.exists("images/nps_distribution.png")
     
     # Test file sizes (should be reasonable for PNG files)
-    assert os.path.getsize("nps_analysis.png") > 1000
-    assert os.path.getsize("nps_distribution.png") > 1000
+    assert os.path.getsize("images/nps_analysis.png") > 1000
+assert os.path.getsize("images/nps_distribution.png") > 1000
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ import re
 from collections import Counter
 
 # Load data and extract improvement suggestions
-df = pd.read_csv("imported_data.csv")
+df = pd.read_csv("csv/imported_data.csv")
 improvement_col = 'What should we improve?'
 
 # Define improvement categories based on actual feedback
@@ -56,7 +56,7 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis('off')
 plt.title('Improvement Areas by Category', fontsize=18, fontweight='bold', pad=20)
 plt.tight_layout()
-plt.savefig('improvement_wordcloud.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/improvement_wordcloud.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Display categorized improvements
@@ -66,7 +66,7 @@ for category, count in sorted(category_counts.items(), key=lambda x: x[1], rever
 
 # Save categorized improvements
 pd.DataFrame(sorted(category_counts.items(), key=lambda x: x[1], reverse=True), 
-             columns=['Category', 'Mentions']).to_csv('improvement_categories.csv', index=False)
+             columns=['Category', 'Mentions']).to_csv('csv/improvement_categories.csv', index=False)
 
-print("\nWord cloud saved as 'improvement_wordcloud.png'")
-print("Improvement categories saved as 'improvement_categories.csv'")
+print("\nWord cloud saved as 'images/improvement_wordcloud.png'")
+print("Improvement categories saved as 'csv/improvement_categories.csv'")

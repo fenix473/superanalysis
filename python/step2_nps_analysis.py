@@ -3,7 +3,7 @@
 import pandas as pd
 
 # Load data and calculate NPS - all lines executed
-df = pd.read_csv("imported_data.csv")
+df = pd.read_csv("csv/imported_data.csv")
 nps_col = ('On a scale from 0 to 10. How likely are you to recommend '
            'this program to a friend or colleague?')
 df['NPS_Score'] = df[nps_col].str.extract(r'(\d+)').astype(float)
@@ -33,4 +33,4 @@ results = {
     'PROD': calculate_nps(df[df['TRACK'] == 'PROD']['NPS_Score'].dropna()),
     'DEV': calculate_nps(df[df['TRACK'] == 'DEV']['NPS_Score'].dropna())
 }
-pd.Series(results).to_csv("nps_results.csv")
+pd.Series(results).to_csv("csv/nps_results.csv")

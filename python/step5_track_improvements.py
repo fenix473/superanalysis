@@ -7,7 +7,7 @@ import re
 from collections import Counter
 
 # Load data
-df = pd.read_csv("imported_data.csv")
+df = pd.read_csv("csv/imported_data.csv")
 improvement_col = 'What should we improve?'
 
 # Define improvement categories based on actual feedback
@@ -70,7 +70,7 @@ for i, (track, improvements) in enumerate(track_improvements.items()):
         axes[i].axis('off')
 
 plt.tight_layout()
-plt.savefig('track_improvements.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/track_improvements.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Display results by track
@@ -94,7 +94,7 @@ for track, improvements in track_improvements.items():
     else:
         track_results.append({'Track': track, 'Category': 'None', 'Mentions': 0})
 
-pd.DataFrame(track_results).to_csv('track_improvements.csv', index=False)
+pd.DataFrame(track_results).to_csv('csv/track_improvements.csv', index=False)
 
-print("\nTrack improvements saved as 'track_improvements.png'")
-print("Detailed results saved as 'track_improvements.csv'")
+print("\nTrack improvements saved as 'images/track_improvements.png'")
+print("Detailed results saved as 'csv/track_improvements.csv'")

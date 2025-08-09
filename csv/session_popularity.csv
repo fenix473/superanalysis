@@ -1,0 +1,29 @@
+Session,Total_Mentions,Promoter_Mentions,Detractor_Mentions,Avg_NPS_of_Fans,Track_Distribution
+"Day 3, Session 3: Capstone Workshop: Developing Your Strategic AI Action plan",2,2,0,9.5,{'EXEC': 2}
+"Day 1, Session 3: Data as the Fuel: AI Data Strategy & Governance",6,3,0,8.7,{'EXEC': 6}
+"Day 2, Session 3: Transforming Vision into Action Part 1: Business Impact Framework",3,3,0,10.0,{'EXEC': 3}
+"Day 1, Session 1: Demystifying AI: Beyond the Hype",2,2,0,10.0,{'EXEC': 2}
+"Day 2, Session 2: Fireside chat with Amanda Crawford",2,1,0,8.5,{'EXEC': 2}
+"Day 2, Session 1: Generative AI",2,2,0,10.0,{'EXEC': 2}
+"Day 3, Session 2: Navigating the AI Ecosystem: Build, Buy, or Partner",3,2,0,8.7,{'EXEC': 3}
+"Day 3, Session1: Measuring AI Value: Beyond Traditional ROI & Ethical AI: Principles, Risks & Regulatory Compliance",6,3,0,8.8,{'EXEC': 6}
+"Day 1, Session 2: AI in Action: Industry & Functional use Cases",1,1,0,10.0,{'EXEC': 1}
+"Day 3, Session 1: AI in the Workplace: What’s Changing? Discussion",7,5,0,9.4,{'PROD': 7}
+"Day 1, Session 1: AI 101 Without the Tech Talk",4,3,1,8.5,{'PROD': 4}
+"Day 1, Session 4: AI for Creativity & Marketing",8,4,1,8.0,{'PROD': 8}
+"Day 2, Session 4: Staying Safe with AI: Privacy, Trust & Limits",4,2,0,8.5,{'PROD': 4}
+"Day 3, Session 2&3: Showcase Studio: Build Your “AI in Action” project",3,2,1,8.0,{'PROD': 3}
+"Day 1, Session 3: Apply It: AI in Action - Use Tools for Everyday Goals",2,1,1,5.5,{'PROD': 2}
+"Day 2, Session 1: Lead with AI: Save Time with Workflows",4,3,0,9.5,{'PROD': 4}
+"Day 1, Session 3: Integrating LLM with application using API, tools and MCP",3,3,0,10.0,{'DEV': 3}
+"Day 3, Session 2&3: End-to-End LLM Application Development and coding agent",15,9,0,9.1,{'DEV': 15}
+"Day 2, Session 4: N8n / cybersecurity framework / LLM guard",5,3,1,8.8,{'DEV': 5}
+"Day 2, Session 3: Building RAG system with local LLM",8,5,0,9.1,{'DEV': 8}
+"Day 1, Session1: Understanding LLMs",2,1,0,8.5,{'DEV': 2}
+"Day 2, Session 2: Agentic AI from Notebook to Production",5,1,0,7.8,{'DEV': 5}
+"Day 3, Session 1: Building applications using coding agents",4,3,0,9.5,{'DEV': 4}
+"Day 1, Session2: Mastering Prompt Engineering Techniques & tools for prompt building",1,0,1,6.0,{'DEV': 1}
+"Day 2, Session 4: Transforming Vision into Action Part 2: Framework Application",1,1,0,9.0,{'EXEC': 1}
+"Day 1, Session 2: Try This: AI Tools for Everyday Tasks & Productivity",3,3,0,10.0,{'PROD': 3}
+"Day 2, Session 3: Tool Talk: Rate & Reflect",1,1,0,9.0,{'PROD': 1}
+"Day 1, Session 4: Introduction to RAG and basic implementation",1,1,0,10.0,{'DEV': 1}

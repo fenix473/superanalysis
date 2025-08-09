@@ -1386,3 +1386,222 @@ html {
         text-align: center;
     }
 }
+
+/* All Sessions Analysis Styles */
+.all-sessions-overview {
+    margin-bottom: 3rem;
+}
+
+.sessions-summary {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sessions-summary h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.sessions-summary p {
+    color: #718096;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.track-sessions-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.track-sessions-section.exec-track {
+    border-left: 4px solid #667eea;
+}
+
+.track-sessions-section.prod-track {
+    border-left: 4px solid #f093fb;
+}
+
+.track-sessions-section.dev-track {
+    border-left: 4px solid #4facfe;
+}
+
+.track-sessions-section .track-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.track-sessions-section .track-header h3 {
+    color: #2d3748;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+.session-detail-card {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.session-detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e0;
+}
+
+.session-detail-card .session-header {
+    margin-bottom: 1rem;
+}
+
+.session-detail-card .session-header h4 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.session-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.review-count {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.avg-nps {
+    background: #c6f6d5;
+    color: #22543d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.type-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.type-badge.keywords {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+.type-badge.best-comment {
+    background: #bee3f8;
+    color: #2a4365;
+}
+
+.session-feedback {
+    margin-top: 1rem;
+}
+
+.feedback-content p {
+    color: #4a5568;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
+.keywords-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #f093fb;
+}
+
+.keyword {
+    background: #f7fafc;
+    color: #4a5568;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+}
+
+.keyword:hover {
+    background: #edf2f7;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* Responsive Design for All Sessions */
+@media (max-width: 768px) {
+    .sessions-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .session-detail-card {
+        padding: 1rem;
+    }
+    
+    .session-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .track-sessions-section {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .track-sessions-section .track-header h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .session-detail-card .session-header h4 {
+        font-size: 1rem;
+    }
+    
+    .feedback-content p {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .keywords-list {
+        padding: 0.75rem;
+    }
+    
+    .keyword {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+}

@@ -1,0 +1,543 @@
+{
+  "EXEC": [
+    {
+      "Session": "Day 1, Session 3: Data as the Fuel: AI Data Strategy & Governance",
+      "Mentions": 6,
+      "NPS_Score": 50.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 3,
+      "Top_Motivations": [
+        [
+          "It was interesting to learn about how to use the AI and that the data it gives ur is only data that we\u2019ve trained it on, which is important to be vigilant of. Additionally it was interesting to learn about how data privacy is important when using chats as they are usually logged",
+          279
+        ],
+        [
+          "Totally new information to me. Other sessions were interesting but not new.",
+          75
+        ],
+        [
+          "In order to launch new ideas to vision, I takes strategy.",
+          57
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session1: Measuring AI Value: Beyond Traditional ROI & Ethical AI: Principles, Risks & Regulatory Compliance",
+      "Mentions": 6,
+      "NPS_Score": 50.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 3,
+      "Top_Motivations": [
+        [
+          "The maturity framework, governance, and the considerations of deploying at scale were all very helpful.",
+          103
+        ],
+        [
+          "Very useful information in this presentation, good to see industry use cases",
+          76
+        ],
+        [
+          "Another good framework to assess where companies are in its AI joirney",
+          70
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 3: Transforming Vision into Action Part 1: Business Impact Framework",
+      "Mentions": 3,
+      "NPS_Score": 100.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "Hard to choose just one - but I found the applied nature of this session very helpful (including spreadsheet tool)",
+          114
+        ],
+        [
+          "My goals to grow my non-profit and launch other business ideas.",
+          63
+        ],
+        [
+          "Very pragmatic framework that can be applied repeatedly",
+          55
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session 2: Navigating the AI Ecosystem: Build, Buy, or Partner",
+      "Mentions": 3,
+      "NPS_Score": 66.66666666666666,
+      "Promoters": 2,
+      "Detractors": 0,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "I chose this session, because as a student it was exciting to learn about how the current leaders operate business with AI and have to make decisions based on what would least hurt the company the most.",
+          202
+        ],
+        [
+          "This consideration is part of my entity\u2019s project proposal process.",
+          67
+        ],
+        [
+          "Information shared",
+          18
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session 3: Capstone Workshop: Developing Your Strategic AI Action plan",
+      "Mentions": 2,
+      "NPS_Score": 100.0,
+      "Promoters": 2,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "Information Learned",
+          19
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 1: Demystifying AI: Beyond the Hype",
+      "Mentions": 2,
+      "NPS_Score": 100.0,
+      "Promoters": 2,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "I liked David\u2019s sessions best",
+          29
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 2: Fireside chat with Amanda Crawford",
+      "Mentions": 2,
+      "NPS_Score": 50.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "Really enjoyed the real world discussion.",
+          41
+        ],
+        [
+          "Raw, authentic, behind the curtain",
+          34
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 1: Generative AI",
+      "Mentions": 2,
+      "NPS_Score": 100.0,
+      "Promoters": 2,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "I liked both of David\u2019s sessions the best",
+          41
+        ],
+        [
+          "Can put this to practial use.",
+          29
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 2: AI in Action: Industry & Functional use Cases",
+      "Mentions": 1,
+      "NPS_Score": 100.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "The use cases are critical to my work",
+          37
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 4: Transforming Vision into Action Part 2: Framework Application",
+      "Mentions": 1,
+      "NPS_Score": 100.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "Love frameworks",
+          15
+        ]
+      ]
+    }
+  ],
+  "PROD": [
+    {
+      "Session": "Day 1, Session 4: AI for Creativity & Marketing",
+      "Mentions": 8,
+      "NPS_Score": 37.5,
+      "Promoters": 4,
+      "Detractors": 1,
+      "Passives": 3,
+      "Top_Motivations": [
+        [
+          "I plan on using ai for branding and marketing projects so the session on creativity was just what I needed",
+          106
+        ],
+        [
+          "It was super informative! I was not expecting so much information regarding ai video and image content.",
+          103
+        ],
+        [
+          "It was an engaging session, that allowed me to think outside of the box in a more creative fashion.",
+          99
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session 1: AI in the Workplace: What\u2019s Changing? Discussion",
+      "Mentions": 7,
+      "NPS_Score": 71.42857142857143,
+      "Promoters": 5,
+      "Detractors": 0,
+      "Passives": 2,
+      "Top_Motivations": [
+        [
+          "The positivity that was presented at the panel and the reassurance that humanity will still be an integral part of AI moving forward.",
+          133
+        ],
+        [
+          "I thoroufhly enjoyed the panelists discussions on ethical ai use and the emphasis on our humanity.",
+          98
+        ],
+        [
+          "Engaging, informative, energizing, and motivating talk",
+          54
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 1: AI 101 Without the Tech Talk",
+      "Mentions": 4,
+      "NPS_Score": 50.0,
+      "Promoters": 3,
+      "Detractors": 1,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "the stage was set very well in the opening session. I was inspire",
+          65
+        ],
+        [
+          "Every conversation I had with everyone who had goals",
+          52
+        ],
+        [
+          "Feel of ai landscape",
+          20
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 4: Staying Safe with AI: Privacy, Trust & Limits",
+      "Mentions": 4,
+      "NPS_Score": 50.0,
+      "Promoters": 2,
+      "Detractors": 0,
+      "Passives": 2,
+      "Top_Motivations": [
+        [
+          "It is important for me to be mindful of privacy and security concerns when it comes to ai usage",
+          95
+        ],
+        [
+          "Tangible information regarding safety is really important and this session highlighted that.",
+          92
+        ],
+        [
+          "Concerns about privacy are my biggest obstacle",
+          46
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 1: Lead with AI: Save Time with Workflows",
+      "Mentions": 4,
+      "NPS_Score": 75.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "I want to be able to use AI as an assistant, I really enjoyed all the topics.",
+          77
+        ],
+        [
+          "I learned a lot about how I can leverage AI in my life",
+          54
+        ],
+        [
+          "Everything actually",
+          19
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session 2&3: Showcase Studio: Build Your \u201cAI in Action\u201d project",
+      "Mentions": 3,
+      "NPS_Score": 33.33333333333333,
+      "Promoters": 2,
+      "Detractors": 1,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "Got to Apply our knowledge in a practical application",
+          53
+        ],
+        [
+          "Actual application of knowledge",
+          31
+        ],
+        [
+          "Getting familuar with ai",
+          24
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 2: Try This: AI Tools for Everyday Tasks & Productivity",
+      "Mentions": 3,
+      "NPS_Score": 100.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "Using AI tools immediately",
+          26
+        ],
+        [
+          "Great suggestions!",
+          18
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 3: Apply It: AI in Action - Use Tools for Everyday Goals",
+      "Mentions": 2,
+      "NPS_Score": 0.0,
+      "Promoters": 1,
+      "Detractors": 1,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "It was one of the only sessions that had actionable tools and taught us in a step-by-step way how to use them",
+          109
+        ],
+        [
+          "The content of the presentation. Steve Mudd's work is amazing",
+          61
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 3: Tool Talk: Rate & Reflect",
+      "Mentions": 1,
+      "NPS_Score": 100.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "I loved the hands on exercise where we had to try several different LLMs. Not sure i would have taken the time to do that on my own.",
+          132
+        ]
+      ]
+    }
+  ],
+  "DEV": [
+    {
+      "Session": "Day 3, Session 2&3: End-to-End LLM Application Development and coding agent",
+      "Mentions": 15,
+      "NPS_Score": 60.0,
+      "Promoters": 9,
+      "Detractors": 0,
+      "Passives": 6,
+      "Top_Motivations": [
+        [
+          "It was super informative and interesting. I learned a lot in a short period if time and it made me want to explore the topic further",
+          132
+        ],
+        [
+          "The information was clear and easy to follow and understand. And the instructor was great at answering questions.",
+          113
+        ],
+        [
+          "All of the sessions were great. It was nice to see a variety of expertise level from novice to advanced.",
+          104
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 3: Building RAG system with local LLM",
+      "Mentions": 8,
+      "NPS_Score": 62.5,
+      "Promoters": 5,
+      "Detractors": 0,
+      "Passives": 3,
+      "Top_Motivations": [
+        [
+          "I\u2019m very interested in the AI development side of things. I would\u2019ve selected all the hands on topics. I chose the topic because it used images and I have an image side project that I\u2019m working on. Please put on more hands on workshops! :)",
+          239
+        ],
+        [
+          "Facilitator was great, enjoyed both sessions. I liked the hands on aspect and learning about implementing a local LLM was so cool.",
+          130
+        ],
+        [
+          "Using LLM local was super practical and useful. A lot to learn.",
+          63
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 4: N8n / cybersecurity framework / LLM guard",
+      "Mentions": 5,
+      "NPS_Score": 40.0,
+      "Promoters": 3,
+      "Detractors": 1,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "I think it\u2019s very important to be ethical and having discernment while using these tools.",
+          89
+        ],
+        [
+          "Real production experience, very challenging and insightful",
+          59
+        ],
+        [
+          "Understanding security concerns about llms",
+          42
+        ]
+      ]
+    },
+    {
+      "Session": "Day 2, Session 2: Agentic AI from Notebook to Production",
+      "Mentions": 5,
+      "NPS_Score": 20.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 4,
+      "Top_Motivations": [
+        [
+          "Great intro to langfuse and how to monitor agents and architecture",
+          66
+        ],
+        [
+          "It\u2019s a practical session that we can build on later.",
+          52
+        ],
+        [
+          "Exceptional Hands-On Practice",
+          29
+        ]
+      ]
+    },
+    {
+      "Session": "Day 3, Session 1: Building applications using coding agents",
+      "Mentions": 4,
+      "NPS_Score": 75.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "Using AI for developing applications is the most interesting part. The main part of the future.",
+          95
+        ],
+        [
+          "Good intro to future of app development",
+          39
+        ],
+        [
+          "Real world app development",
+          26
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 3: Integrating LLM with application using API, tools and MCP",
+      "Mentions": 3,
+      "NPS_Score": 100.0,
+      "Promoters": 3,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "It\u2019s the opening of everything so it gave me more of an understanding of LLM and tools",
+          86
+        ],
+        [
+          "Dansih was amazing ad his notebook was very well organised and well explained.",
+          78
+        ],
+        [
+          "This will improve my current product",
+          36
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session1: Understanding LLMs",
+      "Mentions": 2,
+      "NPS_Score": 50.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 1,
+      "Top_Motivations": [
+        [
+          "Good analogy for helping everyone understand LLM in a simple way",
+          64
+        ],
+        [
+          "Informative Icebreaker!",
+          23
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session2: Mastering Prompt Engineering Techniques & tools for prompt building",
+      "Mentions": 1,
+      "NPS_Score": -100.0,
+      "Promoters": 0,
+      "Detractors": 1,
+      "Passives": 0,
+      "Top_Motivations": [
+        [
+          "I want to be able to prompt well to get the best results for my future work.",
+          76
+        ]
+      ]
+    },
+    {
+      "Session": "Day 1, Session 4: Introduction to RAG and basic implementation",
+      "Mentions": 1,
+      "NPS_Score": 100.0,
+      "Promoters": 1,
+      "Detractors": 0,
+      "Passives": 0,
+      "Top_Motivations": []
+    }
+  ]
+}

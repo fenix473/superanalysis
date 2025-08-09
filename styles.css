@@ -1605,3 +1605,530 @@ html {
         padding: 0.4rem 0.6rem;
     }
 }
+
+/* Enhanced Session Analysis Styles */
+.enhanced-sessions-overview {
+    margin-bottom: 3rem;
+}
+
+.enhanced-sessions-section {
+    margin-bottom: 4rem;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-header h3 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.enhanced-sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.enhanced-session-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.enhanced-session-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.enhanced-session-card.top-session {
+    border: 2px solid #fbbf24;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.enhanced-session-card .session-header {
+    margin-bottom: 1rem;
+}
+
+.enhanced-session-card .session-header h4 {
+    color: #1a202c;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.enhanced-session-card .session-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.enhanced-session-card .session-stats span {
+    background: #f7fafc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.enhanced-session-card .session-stats .nps-score {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    font-weight: 600;
+}
+
+.track-motivation-card .track-stats .nps-score {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    font-weight: 600;
+}
+
+.enhanced-session-card .session-keywords {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #4299e1;
+}
+
+.enhanced-session-card .session-keywords strong {
+    color: #2b6cb0;
+    font-weight: 600;
+}
+
+.comprehensive-reviews {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.comprehensive-reviews h5 {
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.review-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #4299e1;
+}
+
+.review-item:last-child {
+    margin-bottom: 0;
+}
+
+.review-rank {
+    background: #4299e1;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.review-text {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #4a5568;
+    font-style: italic;
+}
+
+.review-length {
+    color: #718096;
+    font-size: 0.8rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* Track Motivation Analysis */
+.track-motivation-section {
+    margin-bottom: 4rem;
+}
+
+.track-motivation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.track-motivation-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.track-motivation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.track-motivation-card.exec-track {
+    border-left: 4px solid #e53e3e;
+}
+
+.track-motivation-card.prod-track {
+    border-left: 4px solid #38b2ac;
+}
+
+.track-motivation-card.dev-track {
+    border-left: 4px solid #3182ce;
+}
+
+.track-motivation-card .track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.track-motivation-card .track-header h4 {
+    color: #1a202c;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.track-motivation-card .track-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+}
+
+.track-motivation-card .track-stats span {
+    background: #f7fafc;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.motivation-insights h5 {
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.motivation-insights h5:first-child {
+    margin-top: 0;
+}
+
+.keyword-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.keyword-list .keyword {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #bee3f8;
+}
+
+.session-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.session-list .session-item {
+    background: #f7fafc;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #4a5568;
+    border-left: 3px solid #4299e1;
+}
+
+.enhanced-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Responsive Design for Enhanced Sessions */
+@media (max-width: 768px) {
+    .enhanced-sessions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .track-motivation-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .enhanced-session-card .session-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .track-motivation-card .track-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .track-motivation-card .track-stats {
+        align-items: flex-start;
+    }
+    
+    .enhanced-insights {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .enhanced-session-card {
+        padding: 1rem;
+    }
+    
+    .enhanced-session-card .session-header h4 {
+        font-size: 1rem;
+    }
+    
+    .review-item {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .review-length {
+        align-self: flex-end;
+    }
+}
+
+/* Track Tables Styles */
+.track-tables-section {
+    margin-bottom: 4rem;
+}
+
+.track-table-container {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.track-table-container.exec-track {
+    border-left: 4px solid #e53e3e;
+}
+
+.track-table-container.prod-track {
+    border-left: 4px solid #38b2ac;
+}
+
+.track-table-container.dev-track {
+    border-left: 4px solid #3182ce;
+}
+
+.track-table-container h4 {
+    color: #1a202c;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.track-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.track-table th {
+    background: #f7fafc;
+    color: #2d3748;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.track-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+    font-size: 0.9rem;
+}
+
+.track-table tr:hover {
+    background: #f8fafc;
+}
+
+.track-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* NPS Score styling */
+.track-table td:nth-child(3) {
+    font-weight: 600;
+    text-align: center;
+}
+
+.track-table td:nth-child(3):not(:empty) {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    display: inline-block;
+    min-width: 30px;
+}
+
+/* Promoters/Detractors styling */
+.track-table td:nth-child(4) {
+    color: #38a169;
+    font-weight: 600;
+    text-align: center;
+}
+
+.track-table td:nth-child(5) {
+    color: #e53e3e;
+    font-weight: 600;
+    text-align: center;
+}
+
+.motivation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.motivation-item {
+    background: #f7fafc;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #4a5568;
+    border-left: 3px solid #4299e1;
+    font-style: italic;
+}
+
+.motivation-item:first-child {
+    background: #ebf8ff;
+    border-left-color: #2b6cb0;
+    font-weight: 500;
+}
+
+/* Keywords styling for tables */
+.keywords-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.keywords-list .keyword {
+    background: #f0fff4;
+    color: #22543d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #9ae6b4;
+}
+
+.keywords-list .keyword:first-child {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    border-color: #90cdf4;
+}
+
+/* Responsive Design for Track Tables */
+@media (max-width: 768px) {
+    .track-table-container {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .track-table th,
+    .track-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .track-table th:nth-child(6),
+    .track-table td:nth-child(6) {
+        min-width: 200px;
+    }
+    
+    .motivation-item {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .track-table-container h4 {
+        font-size: 1.1rem;
+    }
+    
+    .track-table th {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .track-table td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.75rem;
+    }
+    
+    .motivation-item {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.5rem;
+    }
+}

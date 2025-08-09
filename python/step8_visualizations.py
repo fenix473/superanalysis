@@ -1,200 +1,304 @@
 """
-Step 8: Track Analysis Visualizations
-Creates visualizations for track-specific feedback analysis
+Step 8 Visualizations: Enhanced Session Analysis Charts
+Creates visualizations for the enhanced session analysis including:
+- Session popularity by track
+- Top sessions with motivation insights
+- Track-specific session preferences
+- Keyword analysis visualization
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from collections import Counter
 import os
-from step8_track_analysis import main as run_track_analysis
 
+# Set style
+plt.style.use('default')
+sns.set_palette("husl")
 
-def create_track_comparison_viz():
-    """Create comprehensive track comparison visualization"""
-    # Run analysis to get fresh data
-    results = run_track_analysis()
-    if not results:
-        print("Error: Could not run track analysis")
-        return
-    
-    # Set up the plot style
-    plt.style.use('default')
-    sns.set_palette("husl")
-    
-    # Create figure with subplots
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-    fig.suptitle('Track-Specific Feedback Analysis', fontsize=16, fontweight='bold')
-    
-    # 1. NPS Comparison by Track
-    tracks = list(results.keys())
-    nps_scores = [results[track]['avg_nps'] for track in tracks]
-    colors = ['#e74c3c', '#3498db', '#2ecc71']  # Red, Blue, Green
-    
-    bars1 = ax1.bar(tracks, nps_scores, color=colors, alpha=0.8)
-    ax1.set_title('Average NPS Score by Track', fontweight='bold')
-    ax1.set_ylabel('Average NPS Score')
-    ax1.set_ylim(0, 10)
-    
-    # Add value labels on bars
-    for bar, score in zip(bars1, nps_scores):
-        height = bar.get_height()
-        ax1.text(bar.get_x() + bar.get_width()/2., height + 0.1,
-                f'{score:.1f}', ha='center', va='bottom', fontweight='bold')
-    
-    # 2. Participant Distribution
-    promoter_counts = [results[track]['promoters_count'] for track in tracks]
-    detractor_counts = [results[track]['detractors_count'] for track in tracks]
-    total_counts = [results[track]['total_participants'] for track in tracks]
-    
-    x = np.arange(len(tracks))
-    width = 0.35
-    
-    bars2 = ax2.bar(x - width/2, promoter_counts, width, label='Promoters', color='#2ecc71', alpha=0.8)
-    bars3 = ax2.bar(x + width/2, detractor_counts, width, label='Detractors', color='#e74c3c', alpha=0.8)
-    
-    ax2.set_title('Promoters vs Detractors by Track', fontweight='bold')
-    ax2.set_ylabel('Number of Participants')
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(tracks)
-    ax2.legend()
-    
-    # Add value labels
-    for bar in bars2:
-        height = bar.get_height()
-        if height > 0:
-            ax2.text(bar.get_x() + bar.get_width()/2., height + 0.1,
-                    f'{int(height)}', ha='center', va='bottom')
-    
-    for bar in bars3:
-        height = bar.get_height()
-        if height > 0:
-            ax2.text(bar.get_x() + bar.get_width()/2., height + 0.1,
-                    f'{int(height)}', ha='center', va='bottom')
-    
-    # 3. Top Keywords by Track (Horizontal bar chart)
-    ax3.set_title('Top 5 Keywords from Promoters by Track', fontweight='bold')
-    
-    y_pos = 0
-    track_colors = {'EXEC': '#e74c3c', 'PROD': '#3498db', 'DEV': '#2ecc71'}
-    
-    for i, track in enumerate(tracks):
-        top_keywords = results[track]['top_keywords'][:5]  # Top 5 keywords
-        if top_keywords:
-            keywords = [kw[0] for kw in top_keywords]
-            counts = [kw[1] for kw in top_keywords]
-            
-            # Plot horizontal bars for this track
-            y_positions = [y_pos + j for j in range(len(keywords))]
-            ax3.barh(y_positions, counts, color=track_colors[track], alpha=0.7, label=track)
-            
-            # Add keyword labels
-            for j, (keyword, count) in enumerate(top_keywords):
-                ax3.text(-0.5, y_pos + j, keyword, ha='right', va='center', fontsize=9)
-            
-            y_pos += len(keywords) + 1  # Space between tracks
-    
-    ax3.set_xlabel('Mention Count')
-    ax3.set_yticks([])
-    ax3.legend()
-    
-    # 4. Track Overview Table
-    ax4.axis('tight')
-    ax4.axis('off')
-    
-    # Create table data
-    table_data = []
-    for track in tracks:
-        data = results[track]
-        table_data.append([
-            track,
-            data['total_participants'],
-            f"{data['avg_nps']:.1f}",
-            data['promoters_count'],
-            data['detractors_count']
-        ])
-    
-    table = ax4.table(cellText=table_data,
-                     colLabels=['Track', 'Total', 'Avg NPS', 'Promoters', 'Detractors'],
-                     cellLoc='center',
-                     loc='center',
-                     colColours=['#f0f0f0']*5)
-    
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1.2, 2)
-    ax4.set_title('Track Summary Statistics', fontweight='bold', pad=20)
-    
-    # Adjust layout and save
-    plt.tight_layout()
-    
-    # Ensure images directory exists
-    os.makedirs("images", exist_ok=True)
-    
-    # Save the plot
-    plt.savefig("images/track_analysis.png", dpi=300, bbox_inches='tight')
-    plt.show()
-    
-    print("Track analysis visualization saved to images/track_analysis.png")
-
-
-def create_keyword_wordcloud():
-    """Create word clouds for each track's top keywords"""
+def create_session_popularity_chart():
+    """Create a chart showing session popularity by track"""
     try:
-        from wordcloud import WordCloud
+        # Read session analysis data
+        session_data = pd.read_csv("csv/session_analysis.csv")
         
-        # Read keyword data
-        keyword_df = pd.read_csv("csv/track_keywords.csv")
+                        # Extract track information from the breakdown
+                track_data = []
+                for _, row in session_data.iterrows():
+                    session = row['Session']
+                    mentions = row['Total_Mentions']
+                    nps_score = row['NPS_Score']
+                    
+                    # Parse track breakdown (simplified approach)
+                    if 'EXEC' in str(row['Track_Breakdown']):
+                        track_data.append({'Session': session, 'Track': 'EXEC', 'Mentions': mentions, 'NPS_Score': nps_score})
+                    if 'PROD' in str(row['Track_Breakdown']):
+                        track_data.append({'Session': session, 'Track': 'PROD', 'Mentions': mentions, 'NPS_Score': nps_score})
+                    if 'DEV' in str(row['Track_Breakdown']):
+                        track_data.append({'Session': session, 'Track': 'DEV', 'Mentions': mentions, 'NPS_Score': nps_score})
         
-        fig, axes = plt.subplots(1, 3, figsize=(18, 6))
-        fig.suptitle('Top Keywords by Track (from Promoters)', fontsize=16, fontweight='bold')
+        track_df = pd.DataFrame(track_data)
         
-        track_colors = {'EXEC': 'Reds', 'PROD': 'Blues', 'DEV': 'Greens'}
+        # Get top 10 sessions by mentions
+        top_sessions = track_df.groupby('Session')['Mentions'].sum().sort_values(ascending=False).head(10)
         
-        for i, track in enumerate(['EXEC', 'PROD', 'DEV']):
-            track_keywords = keyword_df[keyword_df['Track'] == track]
+        # Create the visualization
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 12))
+        
+        # Chart 1: Top sessions by mentions
+        colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', 
+                 '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9']
+        
+        bars1 = ax1.barh(range(len(top_sessions)), top_sessions.values, color=colors)
+        ax1.set_yticks(range(len(top_sessions)))
+        ax1.set_yticklabels([session[:50] + '...' if len(session) > 50 else session 
+                            for session in top_sessions.index], fontsize=10)
+        ax1.set_xlabel('Number of Mentions', fontsize=12, fontweight='bold')
+        ax1.set_title('Top 10 Most Popular Sessions by Total Mentions', fontsize=14, fontweight='bold')
+        ax1.grid(axis='x', alpha=0.3)
+        
+        # Add value labels on bars
+        for i, bar in enumerate(bars1):
+            width = bar.get_width()
+            ax1.text(width + 0.1, bar.get_y() + bar.get_height()/2, 
+                    f'{int(width)}', ha='left', va='center', fontweight='bold')
+        
+        # Chart 2: Track breakdown for top sessions
+        track_colors = {'EXEC': '#FF6B6B', 'PROD': '#4ECDC4', 'DEV': '#45B7D1'}
+        
+        # Get track breakdown for top sessions
+        top_session_names = top_sessions.index
+        track_breakdown_data = []
+        
+        for session in top_session_names:
+            session_tracks = track_df[track_df['Session'] == session]
+            for _, row in session_tracks.iterrows():
+                track_breakdown_data.append({
+                    'Session': session[:30] + '...' if len(session) > 30 else session,
+                    'Track': row['Track'],
+                    'Mentions': row['Mentions']
+                })
+        
+        track_breakdown_df = pd.DataFrame(track_breakdown_data)
+        
+        if not track_breakdown_df.empty:
+            # Create stacked bar chart
+            pivot_data = track_breakdown_df.pivot(index='Session', columns='Track', values='Mentions').fillna(0)
             
-            if not track_keywords.empty:
-                # Create word frequency dict
-                word_freq = dict(zip(track_keywords['Keyword'], track_keywords['Mentions']))
-                
-                # Generate word cloud
-                wordcloud = WordCloud(width=400, height=300, 
-                                    background_color='white',
-                                    colormap=track_colors[track],
-                                    max_words=50,
-                                    relative_scaling=0.5).generate_from_frequencies(word_freq)
-                
-                axes[i].imshow(wordcloud, interpolation='bilinear')
-                axes[i].set_title(f'{track} Track Keywords', fontweight='bold')
-                axes[i].axis('off')
-            else:
-                axes[i].text(0.5, 0.5, 'No keywords found', ha='center', va='center', transform=axes[i].transAxes)
-                axes[i].set_title(f'{track} Track Keywords', fontweight='bold')
-                axes[i].axis('off')
+            pivot_data.plot(kind='barh', stacked=True, ax=ax2, color=[track_colors.get(col, '#999999') for col in pivot_data.columns])
+            ax2.set_xlabel('Number of Mentions', fontsize=12, fontweight='bold')
+            ax2.set_title('Track Breakdown for Top Sessions', fontsize=14, fontweight='bold')
+            ax2.legend(title='Track', bbox_to_anchor=(1.05, 1), loc='upper left')
+            ax2.grid(axis='x', alpha=0.3)
         
         plt.tight_layout()
-        plt.savefig("images/track_keywords_wordcloud.png", dpi=300, bbox_inches='tight')
-        plt.show()
+        plt.savefig('images/enhanced_session_popularity.png', dpi=300, bbox_inches='tight')
+        plt.close()
         
-        print("Track keywords word cloud saved to images/track_keywords_wordcloud.png")
+        print("✅ Session popularity chart created: images/enhanced_session_popularity.png")
         
-    except ImportError:
-        print("WordCloud not available. Install with: pip install wordcloud")
+    except Exception as e:
+        print(f"❌ Error creating session popularity chart: {e}")
+
+
+def create_motivation_analysis_chart():
+    """Create a chart showing motivation analysis for top sessions"""
+    try:
+        # Read session reviews data
+        reviews_data = pd.read_csv("csv/session_reviews.csv")
+        
+        # Get sessions with 3+ reviews (comprehensive analysis)
+        session_counts = reviews_data['Session'].value_counts()
+        comprehensive_sessions = session_counts[session_counts >= 3].index
+        
+        if len(comprehensive_sessions) == 0:
+            print("⚠️ No sessions with 3+ reviews found for comprehensive analysis")
+            return
+        
+        # Filter for comprehensive sessions
+        comprehensive_reviews = reviews_data[reviews_data['Session'].isin(comprehensive_sessions)]
+        
+        # Create visualization
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 12))
+        
+        # Chart 1: Review length analysis
+        session_avg_lengths = comprehensive_reviews.groupby('Session')['Length'].mean().sort_values(ascending=False)
+        
+        colors = plt.cm.viridis(np.linspace(0, 1, len(session_avg_lengths)))
+        bars1 = ax1.barh(range(len(session_avg_lengths)), session_avg_lengths.values, color=colors)
+        
+        ax1.set_yticks(range(len(session_avg_lengths)))
+        ax1.set_yticklabels([session[:40] + '...' if len(session) > 40 else session 
+                            for session in session_avg_lengths.index], fontsize=10)
+        ax1.set_xlabel('Average Review Length (characters)', fontsize=12, fontweight='bold')
+        ax1.set_title('Average Motivation Review Length by Session (3+ reviews)', fontsize=14, fontweight='bold')
+        ax1.grid(axis='x', alpha=0.3)
+        
+        # Add value labels
+        for i, bar in enumerate(bars1):
+            width = bar.get_width()
+            ax1.text(width + 2, bar.get_y() + bar.get_height()/2, 
+                    f'{int(width)}', ha='left', va='center', fontweight='bold')
+        
+        # Chart 2: Top motivation keywords
+        # Read keywords data
+        keywords_data = pd.read_csv("csv/session_keywords_enhanced.csv")
+        
+        if not keywords_data.empty:
+            # Get top keywords across all sessions
+            top_keywords = keywords_data.groupby('Keyword')['Mentions'].sum().sort_values(ascending=False).head(10)
+            
+            colors2 = plt.cm.Set3(np.linspace(0, 1, len(top_keywords)))
+            bars2 = ax2.barh(range(len(top_keywords)), top_keywords.values, color=colors2)
+            
+            ax2.set_yticks(range(len(top_keywords)))
+            ax2.set_yticklabels(top_keywords.index, fontsize=11)
+            ax2.set_xlabel('Total Mentions', fontsize=12, fontweight='bold')
+            ax2.set_title('Top Keywords from Session Motivations', fontsize=14, fontweight='bold')
+            ax2.grid(axis='x', alpha=0.3)
+            
+            # Add value labels
+            for i, bar in enumerate(bars2):
+                width = bar.get_width()
+                ax2.text(width + 0.1, bar.get_y() + bar.get_height()/2, 
+                        f'{int(width)}', ha='left', va='center', fontweight='bold')
+        
+        plt.tight_layout()
+        plt.savefig('images/enhanced_motivation_analysis.png', dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        print("✅ Motivation analysis chart created: images/enhanced_motivation_analysis.png")
+        
+    except Exception as e:
+        print(f"❌ Error creating motivation analysis chart: {e}")
+
+
+def create_track_comparison_chart():
+    """Create a chart comparing tracks with session preferences"""
+    try:
+        # Read track analysis data
+        track_data = pd.read_csv("csv/track_analysis_enhanced.csv")
+        
+        # Read track keywords
+        track_keywords = pd.read_csv("csv/track_keywords.csv")
+        
+        # Create visualization
+        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
+        
+                        # Chart 1: Track NPS comparison
+                tracks = track_data['Track']
+                nps_scores = track_data['NPS_Score']
+                participants = track_data['Total_Participants']
+        
+        colors = ['#FF6B6B', '#4ECDC4', '#45B7D1']
+        bars1 = ax1.bar(tracks, nps_scores, color=colors, alpha=0.8)
+        ax1.set_ylabel('Average NPS Score', fontsize=12, fontweight='bold')
+        ax1.set_title('Track Performance Comparison', fontsize=14, fontweight='bold')
+        ax1.grid(axis='y', alpha=0.3)
+        
+        # Add value labels
+        for bar, score in zip(bars1, nps_scores):
+            height = bar.get_height()
+            ax1.text(bar.get_x() + bar.get_width()/2., height + 0.1,
+                    f'{score:.1f}', ha='center', va='bottom', fontweight='bold')
+        
+        # Chart 2: Participant distribution
+        ax2.pie(participants, labels=tracks, autopct='%1.1f%%', startangle=90, colors=colors)
+        ax2.set_title('Participant Distribution by Track', fontsize=14, fontweight='bold')
+        
+        # Chart 3: Top keywords by track
+        if not track_keywords.empty:
+            # Get top 5 keywords for each track
+            top_keywords_by_track = {}
+            for track in tracks:
+                track_kw = track_keywords[track_keywords['Track'] == track].nlargest(5, 'Mentions')
+                top_keywords_by_track[track] = track_kw
+            
+            # Create horizontal bar chart for keywords
+            y_pos = 0
+            for track in tracks:
+                if track in top_keywords_by_track and not top_keywords_by_track[track].empty:
+                    keywords = top_keywords_by_track[track]['Keyword'].tolist()
+                    mentions = top_keywords_by_track[track]['Mentions'].tolist()
+                    
+                    x_pos = np.arange(len(keywords))
+                    bars = ax3.barh(y_pos + x_pos, mentions, color=colors[tracks.tolist().index(track)], alpha=0.7)
+                    ax3.set_yticks(y_pos + x_pos)
+                    ax3.set_yticklabels([f"{track}: {kw}" for kw in keywords], fontsize=9)
+                    
+                    # Add value labels
+                    for bar, mention in zip(bars, mentions):
+                        width = bar.get_width()
+                        ax3.text(width + 0.1, bar.get_y() + bar.get_height()/2, 
+                                f'{mention}', ha='left', va='center', fontsize=8)
+                    
+                    y_pos += len(keywords) + 1
+            
+            ax3.set_xlabel('Mentions', fontsize=12, fontweight='bold')
+            ax3.set_title('Top Keywords by Track', fontsize=14, fontweight='bold')
+            ax3.grid(axis='x', alpha=0.3)
+        
+        # Chart 4: Session preferences heatmap
+        # Create a simple heatmap showing session popularity by track
+        session_data = pd.read_csv("csv/session_analysis.csv")
+        
+        # Extract track information for heatmap
+        heatmap_data = []
+        for _, row in session_data.iterrows():
+            session = row['Session']
+            mentions = row['Total_Mentions']
+            
+            # Parse track from breakdown (simplified)
+            if 'EXEC' in str(row['Track_Breakdown']):
+                heatmap_data.append({'Session': session[:30], 'Track': 'EXEC', 'Mentions': mentions})
+            if 'PROD' in str(row['Track_Breakdown']):
+                heatmap_data.append({'Session': session[:30], 'Track': 'PROD', 'Mentions': mentions})
+            if 'DEV' in str(row['Track_Breakdown']):
+                heatmap_data.append({'Session': session[:30], 'Track': 'DEV', 'Mentions': mentions})
+        
+        if heatmap_data:
+            heatmap_df = pd.DataFrame(heatmap_data)
+            heatmap_pivot = heatmap_df.pivot(index='Session', columns='Track', values='Mentions').fillna(0)
+            
+            # Get top 8 sessions for heatmap
+            top_sessions_heatmap = heatmap_pivot.sum(axis=1).sort_values(ascending=False).head(8).index
+            heatmap_pivot_top = heatmap_pivot.loc[top_sessions_heatmap]
+            
+            sns.heatmap(heatmap_pivot_top, annot=True, fmt='g', cmap='YlOrRd', ax=ax4, cbar_kws={'label': 'Mentions'})
+            ax4.set_title('Session Popularity by Track (Top 8 Sessions)', fontsize=14, fontweight='bold')
+            ax4.set_xlabel('Track', fontsize=12, fontweight='bold')
+            ax4.set_ylabel('Session', fontsize=12, fontweight='bold')
+        
+        plt.tight_layout()
+        plt.savefig('images/enhanced_track_comparison.png', dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        print("✅ Track comparison chart created: images/enhanced_track_comparison.png")
+        
+    except Exception as e:
+        print(f"❌ Error creating track comparison chart: {e}")
 
 
 def main():
-    """Main function to create all track visualizations"""
-    print("Creating track analysis visualizations...")
+    """Main function to create all visualizations"""
+    print("🎨 Creating Enhanced Step 8 Visualizations...")
+    print("=" * 60)
     
-    # Create main comparison visualization
-    create_track_comparison_viz()
+    # Create output directory
+    os.makedirs("images", exist_ok=True)
     
-    # Create keyword word clouds
-    create_keyword_wordcloud()
+    # Create all charts
+    create_session_popularity_chart()
+    create_motivation_analysis_chart()
+    create_track_comparison_chart()
     
-    print("All track visualizations created successfully!")
+    print("\n✅ All enhanced step 8 visualizations completed!")
+    print("📊 Generated charts:")
+    print("  • images/enhanced_session_popularity.png")
+    print("  • images/enhanced_motivation_analysis.png")
+    print("  • images/enhanced_track_comparison.png")
 
 
 if __name__ == "__main__":

@@ -21,6 +21,7 @@
                 <li><a href="#nps-analysis">NPS Analysis</a></li>
                 <li><a href="#improvements">Improvements</a></li>
                 <li><a href="#rankings">Rankings</a></li>
+                <li><a href="#correlation">Correlation</a></li>
                 <li><a href="#recommendations">Recommendations</a></li>
             </ul>
         </div>
@@ -302,6 +303,90 @@
                         <img src="images/session_rankings.png" alt="Session Rankings" class="viz-image">
                         <p>Session Rankings by Track (1 point per session regardless of rank)</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Correlation Analysis -->
+    <section id="correlation" class="section">
+        <div class="container">
+            <h2><i class="fas fa-chart-line"></i> Correlation Analysis</h2>
+            <div class="correlation-overview">
+                <div class="correlation-card">
+                    <h3>Critical Issues Identified</h3>
+                    <div class="critical-issues">
+                                                   <div class="issue-item high">
+                               <span class="issue-name">Structure & Organization</span>
+                               <span class="correlation-score">2 mentions</span>
+                               <span class="impact">High Impact</span>
+                           </div>
+                           <div class="issue-item medium">
+                               <span class="issue-name">Logistics & Planning</span>
+                               <span class="correlation-score">1 mention</span>
+                               <span class="impact">Medium Impact</span>
+                           </div>
+                           <div class="issue-item low">
+                               <span class="issue-name">Time Management</span>
+                               <span class="correlation-score">1 mention</span>
+                               <span class="impact">Low Impact</span>
+                           </div>
+                    </div>
+                                           <p class="correlation-description">
+                           <strong>Key Finding:</strong> Low scorers (NPS 0-6) primarily want better structure, organization, and logistics. 
+                           The most critical issues are: too much unstructured time, poor event administration, and lack of clear itineraries.
+                       </p>
+                </div>
+                <div class="correlation-card">
+                    <h3>NPS Category Breakdown</h3>
+                    <div class="nps-breakdown-analysis">
+                        <div class="nps-category detractor">
+                            <h4>Detractors (0-6)</h4>
+                            <ul>
+                                <li>Hands On Experience: 1 mention</li>
+                                <li>Structure & Organization: 1 mention</li>
+                                <li>Other: 1 mention</li>
+                            </ul>
+                        </div>
+                        <div class="nps-category passive">
+                            <h4>Passives (7-8)</h4>
+                            <ul>
+                                <li>Other: 6 mentions</li>
+                                <li>Structure & Organization: 3 mentions</li>
+                                <li>Hands On Experience: 2 mentions</li>
+                            </ul>
+                        </div>
+                        <div class="nps-category promoter">
+                            <h4>Promoters (9-10)</h4>
+                            <ul>
+                                <li>Other: 16 mentions</li>
+                                <li>Hands On Experience: 7 mentions</li>
+                                <li>Structure & Organization: 3 mentions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visualization-section">
+                <h3>Correlation Analysis Visualization</h3>
+                <div class="viz-grid">
+                                                                                       <div class="viz-card full-width">
+                            <h4>Lowest NPS Scores Analysis</h4>
+                            <div class="lowest-nps-results">
+                                <div class="nps-item lowest">
+                                    <strong>NPS 2.0 (PROD):</strong>
+                                    <p>"There was far too much unstructured time and "fluff" in this program. We were often left on our own to "work on a project," which felt unrealistic given that we were expected to learn new tools and implement a solution by the end of day three. After the first day, there was minimal hands‑on use of the technology. Most of the remaining time focused on abstract discussions about "being human" or other theoretical ideas rather than practical skill‑building. Additionally, the tracks were not well‑defined—participants who fell between the Developer and Productivity paths had no clear way to succeed in either. Overall, the structure made it difficult to gain meaningful experience with the tools or achieve the intended outcomes."</p>
+                                </div>
+                                <div class="nps-item">
+                                    <strong>NPS 4.0 (PROD):</strong>
+                                    <p>"Logistics, planning, administration of event"</p>
+                                </div>
+                                <div class="nps-item">
+                                    <strong>NPS 6.0 (DEV):</strong>
+                                    <p>"More organization. Itineraries for all three days, breakfast and lunch provided, sticking to schedule. For developers, have them create their accounts and keys a week before the event with visual instructions."</p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
